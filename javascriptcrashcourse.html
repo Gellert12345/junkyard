@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <h3>Találd ki a 11-et</h3>
+  <input id="input11" type="text">
+  <button id="ellenoriz11">Tesztelés</button>
+
+  <script>
+    const target11 = 11;
+    const input11 = document.getElementById("input11");
+    const button11 = document.getElementById("ellenoriz11");
+
+    button11.addEventListener("click", () => {
+      const tipp = Number(input11.value);
+
+      if (tipp === target11) {
+        alert("Eltaláltad a számot (11)");
+      } else {
+        alert(`Nem találtad el, a tipped: ${tipp}`);
+      }
+    });
+  </script>
+
+<!--ez itt egy szinválasztó attól függ melyiket vélasztja a vevő-->
+
+  <h1>piros auto 1 , kék auto 2, fekete auto 3</h1>
+  <input id="érték" type="number" placeholder="adj meg egy számot">
+  <button id="send">küld el</button>
+  <script>
+    const input = document.getElementById("érték"); //uj változó de vissza utal a régi elmere ID alapja
+    const button = document.getElementById("send");
+    button.addEventListener("click", () => {
+      const szin = Number(input.value); // a szin az egyenlő a beirt értékel
+      switch (szin) {
+        case 1:
+          alert("piros auto");
+          break;
+        case 2:
+          alert("kék auto");
+          break;
+        case 3:
+          alert("fekte auto");
+          break;
+        default:
+          alert("nincs ilyen színű auto");
+      }
+    });
+  </script>
+</body>
+
+</html>
