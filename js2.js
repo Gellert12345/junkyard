@@ -73,4 +73,54 @@ switch (true) {
         console.log("idősebb mint a 30 ");
 
 }
-//fuction
+//fuction ez egy lista amibe tudsz tárolni utasításokat
+function susdmeg() {
+    console.log("önts olajat a servenyőbe");
+    fűszerekhozzá()
+    console.log("adj hozzá tojást");
+    console.log("süsd meg 4 percig");
+}
+
+function fűszerekhozzá () {
+    console.log("bazsalikom");
+    console.log("só");
+    console.log("bors");
+}
+
+
+// fuction meghívás/índítás. ==== mind1 hol történik meg mert ugyan ugy le fog futtni
+susdmeg();
+
+//function mint  matematikai függvény(input adat=> output adat generálás)
+function addOne(szam) {
+    console.log(szam);
+    return szam +1;
+}
+addOne(5); // hozzá ad a számokhoz 5öt kiirásnál
+console.log(addOne(addOne(3)));
+
+//table look up
+function addTwo(szam) {
+    return{
+        0: 2,
+        1: 3,
+        2: 4
+    }[szam]
+}
+console.log(addTwo(addTwo(0)))
+
+//function = first class citizen
+var addThree = function(szam) {
+    return szam + 3
+};
+addThree(4)
+console.log(addThree(3)) 
+
+//object
+
+var window = {
+    log: function(msg){
+        //log msg
+    }
+}
+window.console.log("szia");
