@@ -94,11 +94,28 @@ document.getElementById("box7-input").onkeypress = function(event) { //azért ke
 document.onmousemove = function(event) {
     console.log(event)
     var cordinate = "X:" +event.clientX + ",Y" + event.clientY;
-    console.log(cordinate)
-    document.getElementById("element-eight").firstElementChild.innerHTML = cordinate // korditáa megjelitsée html-be
+    //document.getElementById("element-eight").firstElementChild.innerHTML = cordinate // korditáa megjelitsée html-be
 }
 //9. számológép
 var state = 9;
-document.getElementById("box-9").onsubmit =function() {
-    
+document.getElementById("box-9").onsubmit =function(event) {
+    event.preventDefault(); //nincs http küldés
+    //változó létrheozása beiirt érték alapjan
+    var operant = Number(event.target.elements.operand.value); //numbera kovertáljuk
+    var operator = event.target.elements.operator.value;
+    switch(operator) { //swich keresi a caset ami true(if else az egész)
+        case "mult":
+            state = state * operand;
+            break;
+        case "div":
+            state = state / operand;
+            break;
+        case "add":
+            state = state + operand;
+            break;
+        case "sub":
+            state = state - operand;
+            break;
+    }
+    document.getElementById("element-nine").firstElementChild.innerHTML = state;
 }
