@@ -1,24 +1,33 @@
 //ajax kérések backend == vagyis oldal ujratöltés nélkül frissül az oldal!!!!
-document.getElementById("fetch-posts").onclick = function () {
-    var url = "https://jsonplaceholder.typicode.com/posts";
-    sendRequest(url,"GET",null,function(posts) { //posts ahova érkez nek és kimülidjk az értéketket
-           var postListHTML = ""; // ebből fog összes álni a html tartalom
-            for(var post of post) {
-                postListHTML += "<p>" + post.title + "</p>" + post.body + "</small>";
-            }
-            document.getElementById("post-list-container").innerHTML = postListHTML;
+//post az ami a fronted küld a backendnek
+document.getElementById("login").onclick = function() {
+    var url ="https://regres.in/api/login"; //ide üldi el a felhasznalói adatot
+    //bejeltkezés adatok beégetése:
+    var body = JSON.stringify({ //JSOn stringify == szövegre konvertál a backendnek
+        email:"eve.holt@regres.in",
+        password:"cityslicka"
+    })
+    sendRequest(url,method,body, function(token){
+        sendRequest("https://regres.in/api/users","GET", null, function(users) {
+            console.log(users);
+            sendRequest("https://regres.in/api/tovabbiEroforras1","GET",null,function(eroforrras1){
+                console.log(eroforrras1);
+                sendRequest("https://regres.in/api/tovabbiEroforras2","GET",null,function(eroforras2){
+                    console.log(eroforras2);
+                })
+            })
+        })
+    })
+}
+//url = hova küldi, method az =mit ,body = milyen adatal , callback = mit csinaljak az erdményel !!
+function sendRequest(url,method,body,callback) {
+    var xhr = new XMLHttpRequest(); // api kérés
+    xhr.onreadystatechange = function() { //api figyelés
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            callback(JSON.parse(xhr.responseText)); //vissza alakítjuk a stringet ojbekutám
         }
-    )} ;
-    xhr.open(method,url); // hova küldj        
-
-// request küldés
-function sendRequest(url,method,body, callback) { //ide küld üzeneteket(body url methddod)
-    var xhr = new XMLHttpRequest; // szervorldai kérés
-    xhr.onreadystatechange = function(){ //mindig lefutt ha vmi változás történik
-        if(xhr.readyState === 4 && xhr.status === 200) { //xhr status = 200 vagyis sikeres(szerver értelmzés)
-            callback(JSON.parse(xhr.responseText));//json stringet vmire kovertál
-        }};
-        xhr.setRequestHeader("content-type","applicaton/json");
-    xhr.open(method,url)
-    xhr.send(body);
-};
+    }
+    xhr.open(method,url); //össze rakjuk  requestet
+    xhr.setRequestHeader("content-type","application/json"); //hoy mit küldünkxhr.setRequestHeader("content-type","application/json"); //hoy mit küldünk
+    xhr.send(body)
+}
