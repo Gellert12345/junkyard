@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!--header rész-->
+        <header class="header">
+            <div class="logo-wraper">
+                <div class="logo">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> <!--cdnjs icon-->
+                </div>
+                <h1>Ingyenes Ai kép generátor</h1>
+            </div>
+            <button class="them-toggle">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </header>
+
+        <div class="main-content">
+            <form action=#" class="prompt-form">
+                <div class="prompt-container">
+                    <textarea class="prompt-input" placeholder="Írd le az elképzelésed..." required
+                        autofocus></textarea>
+                    <button type="button" class="prompt-btn">
+                        <i class="fa-solid fa-dice"></i>
+                    </button>
+                </div>
+
+                <!--Prompt acitons egész-->
+                <div class="prompt-actions">
+                    <!--modelek:-->
+                    <div class="select-wrapper">
+                        <select class="custom-select" required>
+                            <option value="" selected disabled>Válaszd ki a modelt:</option>
+
+                            <option value="black-forest-labs/FLUX.1-dev">FLUX.1-dev</option>
+                            <option value="black-forest-labs/FLUX.1-schnell">FLUX.1-schnell</option>
+                            <option value="stabilityai/stable-diffusion-xl-base-1.0">Stable Diffusion XL</option>
+                            <option value="runwayml/stable-diffusion-v1-5">Stable Diffusion v1.5</option>
+                            <option value="prompthero/openjourney">Open Journey</option>
+                        </select>
+                    </div>
+
+                    <!--képek-->
+                    <div class="select-wrapper">
+                        <select class="custom-select" required>
+                            <option value="" selected disabled>Képek száma:</option>
+                            <option value="1">1 kép</option>
+                            <option value="2">2 kép</option>
+                            <option value="3">3 kép</option>
+                            <option value="4">4 kép</option>
+                        </select>
+                    </div>
+                    <!--kép arány-->
+                    <div class="select-wrapper">
+                        <select class="custom-select" required>
+                            <option value="" selected disabled>Kép arány:</option>
+                            <option value="1/1">négyzet(1:1)</option>
+                            <option value="16/9">normál(16:9)</option>
+                            <option value="9/16">portré(9:16)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="generate-btn">
+                        <i class="fa-solid fa-wand-sparkles"></i>
+                        Generálás
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
