@@ -15,6 +15,17 @@
     --color-border:#D4D4ED;
     --color-gradient:linear-gradient(135deg,#5C56E1,#8B5CF6);
 }
+/*vilagos sötét mode:*/
+body.dark-them {
+    --color-card: #1E293B;
+    --color-input: #141B2D;
+    --color-text: #F3F4F6;
+    --color-placeholder: #A3B6DC;
+    --color-border: #334155;
+    background: var(--color-card);
+    background-image: radial-gradient(circle at 15% 50%,rgba(99,102,241,0.15) 0%,transparent 35%),
+    radial-gradient(circle at 85% 30%, rgba(99,102,241,0.1) 0%, transparent 40%);
+}
 
 body {
     display: flex;
@@ -34,6 +45,9 @@ body {
     position: relative;
     overflow: hidden; /*nem lóghat túl*/
 
+}
+body.dark-them .container {
+    border: 1px solid var(--color-border);
 }
 .container::before { /*animáció*/
     content:"";
@@ -133,5 +147,172 @@ body {
     color: #fff;
     font-size: 0.75rem;
     border-radius: 50%;
-    opacity: 0.8;
+    opacity: 0.8; /*láthatatlanság*/
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+.prompt-container .prompt-btn:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.main-content .prompt-actions {
+    display: grid; /*grid system (bootstrap dolog)*/
+    gap: 14px;
+    grid-template-columns: 1.2fr 1fr 1.1fr 1fr;
+}
+.prompt-actions :where(.custom-select, .generate-btn) { /*where=> ha egy css tulajdoság üzközik a másikal akkor ez lesz a felsőbb rendű*/
+    cursor: pointer;
+    background: var(--color-input);
+    border: 1px solid var(--color-border);
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+.prompt-actions .custom-select {
+    width: 100%;
+    outline: none;
+    height: 100%;
+    appearance: none;
+    color: var(--color-text);
+}
+.prompt-actions .custom-select:is(:focus,:hover) {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+.prompt-actions .select-wrapper::after {
+    content: "\f078";
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 900;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-placeholder);
+    padding-left: 7px;
+    background-color: var(--color-input);
+    pointer-events: none;
+    font-size: 0.9rem;
+}
+.prompt-actions .select-wrapper {
+    position: relative;
+}
+.prompt-actions .generate-btn {
+    display: flex;
+    gap: 12px;
+    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 25px;
+    border: none;
+    color: #fff;
+    background: var(--color-gradient);
+    margin-left: auto;
+}
+.prompt-actions .generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(109, 40, 217, 0.3);
+}
+/*kép grid galléria:*/
+.main-content .gallery-grid {
+    display: grid;
+    gap: 15px;
+    margin-top: 30px;
+    grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
+}
+.gallery-grid .img-card {
+    position: relative;
+    overflow: hidden;
+    background:var(--color-input);
+    border: 1px solid var(--color-border);
+    aspect-ratio: 1;
+    border-radius: 16px;
+    transition: all 0.5s ease;
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+    justify-content: center;
+}
+.gallery-grid .img-card .result-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.gallery-grid .img-card .img-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent,rgba(0,0,0,0.8));
+    padding: 20px;
+    justify-content: flex-end; /*a grid jobb oldali végéról indul*/
+    display: flex;
+    opacity: 0; /*átlászóság*/
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.gallery-grid .img-card .img-overlay .img-download-btn {
+    height: 45px;
+    width: 45px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter:blur(5px);
+    border-radius: 50%;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+.gallery-grid .img-card:hover .img-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+.gallery-grid .img-card:not(.loading, .error):hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-grid .img-card:is(.loading, .error) :is(.result-img, .img-overlay) {
+    display: none;
+}
+
+.gallery-grid .img-card .img-overlay .img-download-btn:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.4);
+}
+.gallery-grid .img-card.loading .spinner {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 3px solid var(--color-border);
+    border-top-color: var(--color-primary);
+    /*animation: spin 1s linear infinite ;*/
+}
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+.gallery-grid .img-card .status-container {
+    padding: 15px;
+    display: none;
+    gap: 13px;
+    flex-direction: column;
+    align-items: center;
+}
+.gallery-grid .img-card .status-text {
+    color: var(--color-placeholder);
+    font-size: 0.85rem;
+    text-align: center;
+}
+.gallery-grid .img-card:where(.loading, .error) .status-container {
+    display: flex;
+}
+.gallery-grid .img-card.loading .status-container,
+.gallery-grid .img-card.error .spinner {
+    display: none;
+}
+.gallery-grid .img-card.error .status-container i {
+    font-size: 1.7rem;
+    color: #ef4444;
 }
