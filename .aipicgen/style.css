@@ -210,15 +210,22 @@ body.dark-them .container {
     background: var(--color-gradient);
     margin-left: auto;
 }
+.prompt-actions .generate-btn:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
 .prompt-actions .generate-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(109, 40, 217, 0.3);
 }
 /*kép grid galléria:*/
+.main-content .gallery-grid:has(.img-card) {
+    margin-top: 30px;
+};
 .main-content .gallery-grid {
     display: grid;
     gap: 15px;
-    margin-top: 30px;
     grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
 }
 .gallery-grid .img-card {
@@ -252,7 +259,7 @@ body.dark-them .container {
     pointer-events: none;
     transition: all 0.3s ease;
 }
-.gallery-grid .img-card .img-overlay .img-download-btn {
+.gallery-grid .img-card  .img-download-btn {
     height: 45px;
     width: 45px;
     background: rgba(255, 255, 255, 0.25);
@@ -262,6 +269,9 @@ body.dark-them .container {
     border: none;
     cursor: pointer;
     transition: all 0.4s ease;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 .gallery-grid .img-card:hover .img-overlay {
     opacity: 1;
@@ -286,7 +296,7 @@ body.dark-them .container {
     border-radius: 50%;
     border: 3px solid var(--color-border);
     border-top-color: var(--color-primary);
-    /*animation: spin 1s linear infinite ;*/
+    animation: spin 1s linear infinite ;
 }
 @keyframes spin {
     to {
@@ -316,3 +326,4 @@ body.dark-them .container {
     font-size: 1.7rem;
     color: #ef4444;
 }
+/*reszponzívra csiani:*/

@@ -33,13 +33,13 @@
                     <button type="button" class="prompt-btn">
                         <i class="fa-solid fa-dice"></i>
                     </button>
-                </div>
+                </div> 
 
                 <!--Prompt acitons egész-->
                 <div class="prompt-actions">
                     <!--modelek:-->
                     <div class="select-wrapper">
-                        <select class="custom-select" required>
+                        <select class="custom-select" id="model-select" required>
                             <option value="" selected disabled>Válaszd ki a modelt:</option>
 
                             <option value="black-forest-labs/FLUX.1-dev">FLUX.1-dev</option>
@@ -52,7 +52,7 @@
 
                     <!--képek-->
                     <div class="select-wrapper">
-                        <select class="custom-select" required>
+                        <select class="custom-select" id="count-select" required>
                             <option value="" selected disabled>Képek száma:</option>
                             <option value="1">1 kép</option>
                             <option value="2">2 kép</option>
@@ -62,7 +62,7 @@
                     </div>
                     <!--kép arány-->
                     <div class="select-wrapper">
-                        <select class="custom-select" required>
+                        <select class="custom-select" id="ratio-select" required>
                             <option value="" selected disabled>Kép arány:</option>
                             <option value="1/1">négyzet(1:1)</option>
                             <option value="16/9">normál(16:9)</option>
@@ -76,48 +76,6 @@
                 </div>
                 <!--a végeredény galleria:-->
                 <div class="gallery-grid">
-
-                    <div class="img-card loading">
-                        <div class="status-container">
-                            <div class="spinner"></div>
-                            <i class="fa-solid fa-triangle-exclamation"></i>
-                            <p class="status-text">Generálás...</p>
-                        </div>
-                        <img src="" class="result-img" />
-                        <div class="img-overlay">
-                            <button class="img-download-btn">
-                                <i class="fa-solid fa-downloads"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="img-card">
-                        <img src="" class="result-img" />
-                        <div class="img-overlay">
-                            <button class="img-download-btn">
-                                <i class="fa-solid fa-downloads"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="img-card">
-                        <img src="" class="result-img" />
-                        <div class="img-overlay">
-                            <button class="img-download-btn">
-                                <i class="fa-solid fa-downloads"></i>
-                            </button>
-                        </div>
-                    </div>
-
-
-                    <div class="img-card">
-                        <img src="" class="result-img" />
-                        <div class="img-overlay">
-                            <button class="img-download-btn">
-                                <i class="fa-solid fa-downloads"></i>
-                            </button>
-                        </div>
-                    </div>
                 </div>
             </form>
         </div>
