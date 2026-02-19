@@ -1,12 +1,21 @@
+
 function ListGroup() {
+    const items = [
+        "New York",
+        "San Francisco",
+        "Tokyo",
+        "Paris"
+    ];
+//amikor html-t irunk {}-ba kell rakni a typescriptet hogy le tudjon futtni!!
   return (
-    <ul className="list-group">
-      <li className="list-group-item">An item</li>
-      <li className="list-group-item">A second item</li>
-      <li className="list-group-item">A third item</li>
-      <li className="list-group-item">A fourth item</li>
-      <li className="list-group-item">And a fifth one</li>
-    </ul>
-  );
+    <>
+        <h1>List</h1>
+        <ul className="list-group">
+            {items.map(items =>(
+                <li key={}>{items}</li>
+            ))}//map az konvertál és it=> ez egy nyilnak sámít, {}render data dinamticli}
+            //key hogy typescrit tudja követni
+        </ul>
+    </> );
 }
 export default ListGroup;
