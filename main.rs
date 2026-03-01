@@ -1,3 +1,5 @@
+use std::ptr::slice_from_raw_parts;
+
 //cargo.toml === package.JSON
 fn main() { //fn === function
     println!("Hello, world!");
@@ -69,5 +71,18 @@ fn teszt3() {
     println!("stonencold says: {}",stone_cold);
     //str sclie &str az valhol máshol akódba van deviniélva ésmén csak máshol fehasznalomde  nem tudom módósiítani!
     let string: String = String::from("hello,word");
-    let slice:
+    let slice: &str = &string[0..5]; //0-tól az 5. elemig irja ki indexelés
+    println!("Slice value: {}",slice);
+    /*
+    String vs &stre
+    let s = String::from("hello");
+    let slice: &str = &s;
+    plusz &str csak hivatkozik rá "& = kölcsönzés"
+    */
+    tell_height()
 }
+//out of scoop megoldás
+fn tell_height(height: i32) {
+    println!("My height is {}",height);
+}
+//mindig kell es úgy kell kezdeni hogy fn main() {} mert enélkül nem fog semmilen kód lefuttni
