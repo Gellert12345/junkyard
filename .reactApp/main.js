@@ -1,7 +1,6 @@
-import { app, BrowserWindow } from "electron";
-import path from "path"; //ez arra jó hogy linux mac windwos ugyan ugy éréelje a file elérési utat
-app.on("ready", () => {
-    const mainWindow = new BrowserWindow({});
-    mainWindow.loadFile(path.join(app.getAppPath() + "/dist-react/index.html"));
-});
-//fontos  a jsonba nem lehet kommentet irni!!!!!
+import { jsx as _jsx } from "react/jsx-runtime";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import App from './App';
+createRoot(document.getElementById('root')).render(_jsx(StrictMode, { children: _jsx(App, {}) }));
