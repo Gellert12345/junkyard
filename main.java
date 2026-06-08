@@ -42,9 +42,19 @@ public class main {
 		int result2 =  num1 % num2; //devide
 		System.out.println("Result" + result + "Result2" + result2);
 		//uj function-be hasznalhatod ugyan az a variable nevet!!!
-		
+		for (int i = 0; i < 3; i++) {
+			System.out.println("Hajra zte 3szor");
+			}
+		//while ciklus(kivul hozzuk letre a vltozoot)
+		int whilei = 1;
+	
+		while(whilei <= 4) {
+			System.out.println("while ciklus szamok:" + whilei);
+			whilei++;
+			}
 		
 		}
+		
 		
 }
 
