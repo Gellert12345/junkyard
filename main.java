@@ -51,7 +51,27 @@ public class main {
 		while(whilei <= 4) {
 			System.out.println("while ciklus szamok:" + whilei);
 			whilei++;
-			}
+			}	
+			// masnap 1:30 ora munka
+			int a1 = 3;
+			if( a1 <= 3) {
+				System.out.println("elso fazis");
+				} else {
+					System.out.println("masik fazis");
+					}
+		int x = 6;
+		int y = 6;
+		boolean result3 = x > y;
+		System.out.println("logikai vegeredmeny" + result3); //false
+		
+		int x1 = 2;
+		int y1 = 2;
+		boolean result1 = x1 == y1;
+		System.out.println("egyenlo/ugyan az-e a 2 szam"+ result1);
+		
+		
+		//conditional statement
+			
 		
 		}
 		
