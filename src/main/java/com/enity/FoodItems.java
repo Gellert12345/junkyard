@@ -6,10 +6,12 @@ import jakarta.persistence.Id;
 
 //Annotáciok == @-Al kezdődő dolgok!!
 
-@Entity
+//building the DB schema (like json)
+@Entity // ez jelzi hogy adatbazis tabla lesz a fileba
 public class FoodItems {
     @Id //ez jelzi hogy az Id a primary key
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)//generál egy id magatol pl 1,2,3 stb ne magadtol keljen
+    //megadjak hogy külsöleg ne lehesen válotztatni és dekraláljuk
     private int id; //id => (primary key)
     private String name;
     private double price;
@@ -22,7 +24,7 @@ public class FoodItems {
     public int getId() {
         return id;
     }
-    public void setId(int,id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getName() {
