@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.controllers;
 
 //import like react
 import org.springframework.web.bind.annotation.GetMapping;

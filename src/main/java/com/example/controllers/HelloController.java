@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.controller;
 //impotz minden minz react-ba
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
