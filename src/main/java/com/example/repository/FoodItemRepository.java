@@ -5,6 +5,6 @@ import com.example.demo.enity.FoodItems; //importlajuka az egyik class schemat e
 
 // 4. Egy adatbázis-kezelő interfész (Repository), amely a Spring Data JPA-ból örökli a CRUD műveleteket.
 // A kacsacsőrben megadjuk az entitás osztályt (FoodItems) és annak elsődleges kulcsának típusát (Long).
-public interface FoodItemRepository extends JpaRepository<FoodItems, Long>{
+public interface FoodItemRepository extends JpaRepository<FoodItems, Integer> {
 
 }
