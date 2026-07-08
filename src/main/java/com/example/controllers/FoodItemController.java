@@ -1,6 +1,8 @@
 package com.example.controllers;
 
 import org.springframework.web.bind.annotation.RestController; //to can req res stb
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping; //so i can list the api endpoint
 import com.example.repository.FoodItemRepository;
 import java.util.List;
@@ -16,8 +18,13 @@ public class FoodItemController {
         this.foodItemRepository = foodItemRepository;
     }
 
+    @GetMapping
     public List<FoodItems> getAllFoodItems() {
         return foodItemRepository.findAll();
     }
 
+    @PostMapping
+    public FoodItems createFoodItems(FoodItems foodItems) {
+        return foodItemRepository.save(foodItems);
+    }
 }
