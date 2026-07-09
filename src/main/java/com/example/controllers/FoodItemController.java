@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping; //so i can list t
 import com.example.repository.FoodItemRepository;
 import java.util.List;
 import com.example.demo.enity.FoodItems;
-import org.springframework.data.jpa.repository.JpaRepository; //findbyid
 
 @RestController
 @RequestMapping("/api/foods")
@@ -36,13 +35,15 @@ public class FoodItemController {
 
     // get food item by id{read}
     @GetMapping("{/id}")
-    public Fooditems getFoodItemById(int id) {
-        return foodItemRepository.findById((long) id).orElse(null);
+    public FoodItems getFoodItemById(int id) {
+        return foodItemRepository.findById(id).orElse(null);
     }
 
     // update food item by id {update}
-    @PutMapping
+    @PutMapping("{/id}")
     public FoodItems updaFoodItems(int id, FoodItems foodItemsDetails) {
+        // deklarájuk a változoót és érétket adunk neki
+        FoodItems foodItem = foodItemRepository.findById(id).orElse(null);
         if (foodItem != null) {
             foodItem.setName(foodItemsDetails.getName());
             foodItem.setPrice(foodItemsDetails.getPrice());
@@ -53,7 +54,7 @@ public class FoodItemController {
 
     // delete by id =>
     @DeleteMapping("/{id}")
-    public void deletFoodItem(int id) {
-        foodItemRepository.deleteAllById({long} id);
+    public void deletFoodItem(@PathVariable int id) {
+        foodItemRepository.deleteById(id);
     }
 }
